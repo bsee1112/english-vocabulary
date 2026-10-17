@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 7 單字表（含發音）</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 24px;
+      color: #1e293b;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+    header {
+      background: #3b82f6;
+      color: #ffffff;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: middle;
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: #475569;
+    }
+    tr:hover {
+      background-color: #f8fafc;
+    }
+    .col-num {
+      width: 8%;
+      text-align: center;
+      color: #64748b;
+    }
+    .col-word {
+      width: 28%;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .col-pos {
+      width: 10%;
+      color: #64748b;
+    }
+    .col-trans {
+      width: 38%;
+      color: #334155;
+    }
+    .col-action {
+      width: 16%;
+      text-align: center;
+    }
+    .speak-btn {
+      background-color: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }
+    .speak-btn:hover {
+      background-color: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+    .speak-btn:active {
+      transform: scale(0.96);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Unit 7 單字學習表</h1>
+  </header>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th class="col-num">#</th>
+          <th class="col-word">英文</th>
+          <th class="col-pos">詞性</th>
+          <th class="col-trans">中文釋義</th>
+          <th class="col-action">發音</th>
+        </tr>
+      </thead>
+      <tbody id="vocab-body">
+        <!-- 由 JavaScript 自動產生表格內容 -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  const vocabData = [
+    { num: 1, word: "French", pos: "n.", meaning: "法國人，法國的，法文" },
+    { num: 2, word: "lock", pos: "v.", meaning: "鎖" },
+    { num: 3, word: "amusement park", pos: "n.", meaning: "遊樂場" },
+    { num: 4, word: "afford", pos: "v.", meaning: "負擔" },
+    { num: 5, word: "pay", pos: "v.", meaning: "付錢" },
+    { num: 6, word: "refrigerator", pos: "n.", meaning: "冰箱" },
+    { num: 7, word: "container", pos: "n.", meaning: "容器" },
+    { num: 8, word: "traffic jam", pos: "n.", meaning: "塞車" },
+    { num: 9, word: "strange", pos: "adj.", meaning: "奇怪的" },
+    { num: 10, word: "nor", pos: "conj.", meaning: "也不（通常與neither連用）" },
+    { num: 11, word: "match", pos: "n.", meaning: "比賽，競賽" },
+    { num: 12, word: "church", pos: "n.", meaning: "教堂" },
+    { num: 13, word: "draw", pos: "v.", meaning: "拉，拽" },
+    { num: 14, word: "way", pos: "n.", meaning: "路線" },
+    { num: 15, word: "elder", pos: "adj.", meaning: "年長的" },
+    { num: 16, word: "take medicine", pos: "ph.", meaning: "吃藥" },
+    { num: 17, word: "complete", pos: "v.", meaning: "完成" },
+    { num: 18, word: "junior high school", pos: "n.", meaning: "國中" },
+    { num: 19, word: "quit", pos: "v.", meaning: "辭職，放棄" },
+    { num: 20, word: "job", pos: "n.", meaning: "工作" },
+    { num: 21, word: "quite", pos: "adv.", meaning: "相當地" },
+    { num: 22, word: "hit", pos: "n.", meaning: "非常受歡迎的人事物" },
+    { num: 23, word: "surely", pos: "adv.", meaning: "肯定地，想必" },
+    { num: 24, word: "die", pos: "v.", meaning: "死亡" },
+    { num: 25, word: "in fact", pos: "id.", meaning: "事實上" },
+    { num: 26, word: "age", pos: "n.", meaning: "年齡，年紀" },
+    { num: 27, word: "several times", pos: "ph.", meaning: "數次" },
+    { num: 28, word: "national", pos: "adj.", meaning: "國家的" },
+    { num: 29, word: "traffic", pos: "n.", meaning: "交通流量" },
+    { num: 30, word: "not anymore", pos: "adv.", meaning: "不再，再也不" },
+    { num: 31, word: "convenient", pos: "adj.", meaning: "方便的" },
+    { num: 32, word: "waste", pos: "v.", meaning: "浪費" },
+    { num: 33, word: "record", pos: "n.", meaning: "唱片" },
+    { num: 34, word: "especially", pos: "adv.", meaning: "尤其，特別" },
+    { num: 35, word: "mind", pos: "v.", meaning: "介意" },
+    { num: 36, word: "run a red light", pos: "ph.", meaning: "闖紅燈" },
+    { num: 37, word: "curtains", pos: "n.", meaning: "窗簾" },
+    { num: 38, word: "feast", pos: "n.", meaning: "盛宴，宴會" },
+    { num: 39, word: "habit", pos: "n.", meaning: "習慣" },
+    { num: 40, word: "way", pos: "n.", meaning: "路線" }
+  ];
+
+  function speakWord(text) {
+    if (!('speechSynthesis' in window)) {
+      alert('您的瀏覽器不支援發音功能');
+      return;
+    }
+    window.speechSynthesis.cancel(); // 停止先前的發音
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US'; // 設定美式英語發音
+    utterance.rate = 0.9;     // 語速微調，方便聽清楚
+    window.speechSynthesis.speak(utterance);
+  }
+
+  const tbody = document.getElementById('vocab-body');
+  vocabData.forEach(item => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="col-num">${item.num}</td>
+      <td class="col-word">${item.word}</td>
+      <td class="col-pos">${item.pos}</td>
+      <td class="col-trans">${item.meaning}</td>
+      <td class="col-action">
+        <button class="speak-btn" onclick="speakWord('${item.word.replace(/'/g, "\\'")}')">
+          🔊 發音
+        </button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+</script>
+
+</body>
+</html>
